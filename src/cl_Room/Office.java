@@ -1,5 +1,7 @@
 package cl_Room;
 
+import cl_Room.Office_container;
+
 public abstract class Office {
 	protected int _code;
 	protected int _size;
@@ -37,12 +39,14 @@ public abstract class Office {
 	public static void set_nbOfInstance(int _nbOfInstance) {
 		Office._nbOfInstance = _nbOfInstance;
 	}
-	public Office(int _code, int _size, Boolean _reserved) {
+	public Office(int _code, int _size, Office_container _container) {
 		super();
 		this._code = _code;
 		this._size = _size;
 		_nbOfInstance++;
 		this._id = _nbOfInstance;
-		this._reserved = _reserved;
+		this._reserved = false;
+		// Force to insert the newly created office into the container.
+		_container.get_array().add(this);
 	}
 }
