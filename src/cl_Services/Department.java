@@ -1,13 +1,14 @@
 package cl_Services;
 import cl_People.*;
 
-public abstract class Department {
+public class Department {
 	
 	protected int _id;
 	protected String _name;
 	protected int _budget;
 	protected Director _dir;
 	protected Employee_container _workgroup;
+	protected static int _nbOfInstance;
 	
 	public int get_id() {
 		return _id;
@@ -39,14 +40,22 @@ public abstract class Department {
 	public void set_workgroup(Employee_container _workgroup) {
 		this._workgroup = _workgroup;
 	}
-	public Department(int _id, String _name, int _budget, Director _dir,
-			Employee_container _workgroup) {
+	public static int get_nbOfInstance() {
+		return _nbOfInstance;
+	}
+	public static void set_nbOfInstance(int _nbOfInstance) {
+		Department._nbOfInstance = _nbOfInstance;
+	}
+	public Department(String _name, int _budget, Director _dir,
+			Employee_container _workgroup, Department_container _array) {
 		super();
-		this._id = _id;
 		this._name = _name;
 		this._budget = _budget;
 		this._dir = _dir;
 		this._workgroup = _workgroup;
+		_nbOfInstance++;
+		this._id = _nbOfInstance;
+		_array.get_array().add(this);
 	}
 	@Override
 	public String toString() {

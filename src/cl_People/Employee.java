@@ -1,6 +1,7 @@
 package cl_People;
 
 import java.util.Date;
+import cl_WorkingObjects.CV;
 
 public class Employee {
 	private int _socialId;
@@ -10,6 +11,7 @@ public class Employee {
 	private String _address;
 	private Date _birthDay;
 	private Date _recrutingDay;
+	private CV _curiculum;
 	private Employee_container _container;
 	//private Cv _myCv;
 	public int get_socialId() {
@@ -59,6 +61,12 @@ public class Employee {
 	}
 	public void set_container(Employee_container _container) {
 		this._container = _container;
+	}
+	public CV get_curiculum() {
+		return _curiculum;
+	}
+	public void set_curiculum(CV _curiculum) {
+		this._curiculum = _curiculum;
 	}
 	public Employee(int _socialId, String _firstname, String _lastname,
 			String _phoneNumber, String _address, Date _birthDay,
