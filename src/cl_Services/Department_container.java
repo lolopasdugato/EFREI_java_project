@@ -1,13 +1,20 @@
 package cl_Services;
 import java.util.ArrayList;
 
+import cl_Room.Office;
+
 public class Department_container {
 
 	private ArrayList<Department> _array;
 		
-	public Department_container(ArrayList<Department> _array) {
+	public Department_container() {
 		super();
-		this._array = _array;
+		try{
+			this._array = new ArrayList<Department>();
+		}
+		catch(Exception e){
+			e.printStackTrace();
+		}
 	}
 
 	public ArrayList<Department> get_array() {

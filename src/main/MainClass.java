@@ -21,5 +21,8 @@ public class MainClass {
 		o1.add(e1);
 		System.out.println(e1.toString());
 		System.out.println(i1.toString());
+		e1.showCV();
+		e1.fillCV();
+		e1.showCV();
 	}
 }

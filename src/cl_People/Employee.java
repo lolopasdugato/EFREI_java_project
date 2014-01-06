@@ -1,7 +1,9 @@
 package cl_People;
 
 import java.util.Date;
+
 import cl_WorkingObjects.CV;
+
 import java.util.Scanner;
 
 public class Employee {
@@ -81,6 +83,7 @@ public class Employee {
 		this._address = _address;
 		this._birthDay = _birthDay;
 		this._recrutingDay = _recrutingDay;
+		this._curiculum = new CV(this);
 		_container.get_array().add(this);
 	}
 	@Override
@@ -103,14 +106,12 @@ public class Employee {
 	}
 	
 	public void showCV(){
-		System.out.println("Not yet implemented");
-		// _curiculum.show();
+		_curiculum.show();
 		return;
 	}
 	
 	public void fillCV(){
-		System.out.println("Not yet implemented");
-		// _curiculum.fill();
+		_curiculum.fill();
 		return;
 	}
 	
