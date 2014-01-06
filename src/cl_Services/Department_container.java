@@ -29,6 +29,16 @@ public class Department_container {
 	public String toString() {
 		return "Department_container [_array=" + _array + "]";
 	}
-
+	public void show ()
+	{
+		if (this._array.size() != 0){
+			for (int cpt = 0; cpt < this._array.size(); cpt++){
+				System.out.print("Department :" );
+				this._array.get(cpt).show();
+			}
+		}
+		else
+			System.out.println("No Department");
+	}
 	
 }

@@ -65,10 +65,10 @@ public class Department {
 	}
 	public void show ()
 	{
-		System.out.print("ID: " + _id);
-		System.out.print("Name of the departement:  " + _name);
-		System.out.print("Budget: " + _budget);
-		System.out.print("Director: ");
+		System.out.println("ID: " + _id);
+		System.out.println("Name of the departement:  " + _name);
+		System.out.println("Budget: " + _budget);
+		System.out.println("Director: ");
 		_dir.whoIAm();
 	}
 

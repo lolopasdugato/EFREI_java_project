@@ -52,9 +52,9 @@ public abstract class Office {
 	abstract public void showDetails ();
 	public void show ()
 	{
-		System.out.print("Room ID:" + _id);
-		System.out.print("Code Number:" + _code);
-		System.out.print("Size" + _size);
-		System.out.print("Reserved:" + _reserved);
+		System.out.println("Room ID:" + _id);
+		System.out.println("Code Number:" + _code);
+		System.out.println("Size" + _size);
+		System.out.println("Reserved:" + _reserved);
 	}
 }

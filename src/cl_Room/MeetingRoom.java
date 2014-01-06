@@ -49,12 +49,12 @@ public class MeetingRoom extends Office {
 	}
 	public void showDetails ()
 	{
-		System.out.print("Room ID: " + _id);
-		System.out.print("Code Number: " + _code);
-		System.out.print("Size: " + _size);
-		System.out.print("Reserved: " + _reserved);
-		System.out.print("Manager Details: ");
+		System.out.println("Room ID: " + _id);
+		System.out.println("Code Number: " + _code);
+		System.out.println("Size: " + _size);
+		System.out.println("Reserved: " + _reserved);
+		System.out.println("Manager Details: ");
 		_manager.whoIAm();
-		System.out.print("Projector: " + _projector);
+		System.out.println("Projector: " + _projector);
 	}
 }
