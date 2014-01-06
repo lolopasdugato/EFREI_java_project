@@ -6,15 +6,6 @@ public class OpenSpace extends Office {
 	private Employee_container _roomMembers;
 	private int _capacity;
 	
-	public void showDetails ()
-	{
-		System.out.print("Room ID: " + _id);
-		System.out.print("Code Number: " + _code);
-		System.out.print("Size: " + _size);
-		System.out.print("Reserved: " + _reserved);
-		System.out.print("Capacity: " + _capacity);
-	}
-	
 	public OpenSpace(int _code, int _size, Office_container _container, int _capacity) {
 		super(_code, _size, _container);
 		this._capacity = _capacity;
@@ -72,5 +63,14 @@ public class OpenSpace extends Office {
 			this._reserved = true;
 			return true;
 		}
+	}
+	
+	public void showDetails ()
+	{
+		System.out.print("Room ID: " + _id);
+		System.out.print("Code Number: " + _code);
+		System.out.print("Size: " + _size);
+		System.out.print("Reserved: " + _reserved);
+		System.out.print("Capacity: " + _capacity);
 	}
 }

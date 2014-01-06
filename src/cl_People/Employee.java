@@ -2,6 +2,7 @@ package cl_People;
 
 import java.util.Date;
 import cl_WorkingObjects.CV;
+import java.util.Scanner;
 
 public class Employee {
 	private int _socialId;
@@ -13,7 +14,8 @@ public class Employee {
 	private Date _recrutingDay;
 	private CV _curiculum;
 	private Employee_container _container;
-	//private Cv _myCv;
+
+	
 	public int get_socialId() {
 		return _socialId;
 	}
@@ -88,5 +90,39 @@ public class Employee {
 				+ _phoneNumber + ", _address=" + _address + ", _birthDay="
 				+ _birthDay + ", _recrutingDay=" + _recrutingDay
 				+ "]";
+	}
+	
+	public void whoIAm(){
+		System.out.println("I am " + _firstname + " " + _lastname);
+		System.out.println("My social ID is: " + _socialId);
+		System.out.println("My phone number is: " + _phoneNumber);
+		System.out.println("You can join me by using this address: " + _address);
+		System.out.println("My birthdate is: " + _birthDay);
+		System.out.println("I have been recruted the following day: " + _recrutingDay + "\n");
+		return;
+	}
+	
+	public void showCV(){
+		System.out.println("Not yet implemented");
+		// _curiculum.show();
+		return;
+	}
+	
+	public void fillCV(){
+		System.out.println("Not yet implemented");
+		// _curiculum.fill();
+		return;
+	}
+	
+	public static int whoAreYou(){
+		Scanner sc = new Scanner(System.in);
+		int in;
+		do{
+			System.out.println("Please select your Department: ");
+			System.out.println("1) Employee.");
+			System.out.println("2) Human Ressources.");
+			in = sc.nextInt();
+		}while(in < 1 && in > 2);
+		return in;
 	}
 }
