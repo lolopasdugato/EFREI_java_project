@@ -46,12 +46,11 @@ public class Department {
 	public static void set_nbOfInstance(int _nbOfInstance) {
 		Department._nbOfInstance = _nbOfInstance;
 	}
-	public Department(String _name, int _budget, Director _dir,
-			Employee_container _workgroup, Department_container _array) {
+	public Department(String _name, int _budget, Employee_container _workgroup, Department_container _array) {
 		super();
 		this._name = _name;
 		this._budget = _budget;
-		this._dir = _dir;
+		this._dir = null;
 		this._workgroup = _workgroup;
 		_nbOfInstance++;
 		this._id = _nbOfInstance;
@@ -63,13 +62,16 @@ public class Department {
 				+ _budget + ", _dir=" + _dir + ", _workgroup=" + _workgroup
 				+ "]";
 	}
-	public void show ()
-	{
+	public void show (){
 		System.out.println("ID: " + _id);
 		System.out.println("Name of the departement:  " + _name);
 		System.out.println("Budget: " + _budget);
-		System.out.println("Director: ");
-		_dir.whoIAm();
+		if (_dir != null) {
+			System.out.println("Director: ");
+			_dir.whoIAm();
+		}
+		else
+			System.out.println("No director.");
 	}
 
 	

@@ -2,7 +2,9 @@ package cl_People;
 
 import java.util.Date;
 
+import cl_Services.Department;
 import cl_WorkingObjects.CV;
+import cl_People.Director;
 
 import java.util.Scanner;
 
@@ -84,7 +86,9 @@ public class Employee {
 		this._birthDay = _birthDay;
 		this._recrutingDay = _recrutingDay;
 		this._curiculum = new CV(this);
+		this._container = _container;
 		_container.get_array().add(this);
+		
 	}
 	@Override
 	public String toString() {
@@ -125,5 +129,20 @@ public class Employee {
 			in = sc.nextInt();
 		}while(in < 1 && in > 2);
 		return in;
+	}
+	
+	public static Director promote(Employee temp, Department _belongsTo){
+		Director dirlo = new Director(temp.get_socialId(), temp.get_firstname(), temp.get_lastname(), temp.get_phoneNumber(), temp.get_address(), temp.get_birthDay(), temp.get_recrutingDay(), temp.get_container(), _belongsTo);
+		dirlo.set_curiculum(temp.get_curiculum());
+		_belongsTo.set_dir(dirlo);
+		return dirlo;
+		/*this.set_socialId(e.get_socialId());
+		this.set_firstname(e.get_firstname());
+		this.set_lastname(e.get_lastname());
+		this.set_phoneNumber(e.get_phoneNumber());
+		this.set_address(e.get_address());
+		this.set_birthDay(e.get_birthDay());
+		this.set_recrutingDay(e.get_recrutingDay());
+		e.set_belongsTo(_belongsTo);*/
 	}
 }

@@ -36,8 +36,7 @@ public class Director extends Employee {
 		System.out.println("You can join me by using this address: " + get_address());
 		System.out.println("My birthdate is: " + get_birthDay());
 		System.out.println("I have been recruted the following day: " + get_recrutingDay() + "\n");
-		System.out.print("Name of his departement:");
-		//afficher nom département
+		System.out.println("Name of his departement: " + get_belongsTo().get_name());
 		return;
 	}
 }

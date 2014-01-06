@@ -29,6 +29,7 @@ public class Department_container {
 	public String toString() {
 		return "Department_container [_array=" + _array + "]";
 	}
+	
 	public void show ()
 	{
 		if (this._array.size() != 0){
