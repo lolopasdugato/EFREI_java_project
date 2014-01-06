@@ -1,16 +1,16 @@
 package cl_WorkingObjects;
 
 import java.util.ArrayList;
+import cl_People.Employee;
 
 public class CV {
 
 
 	private ArrayList<String> _jobs;
 	private ArrayList<String> _schooling;
-	public CV(ArrayList<String> _jobs, ArrayList<String> _schooling, Cv_container _container) {
+	public CV(Cv_container _container, Employee _employee) {
 		super();
-		this._jobs = _jobs;
-		this._schooling = _schooling;
+		_employee.set_curiculum(this);
 		_container.get_array().add(this);
 	}
 	public ArrayList<String> get_jobs() {

@@ -17,6 +17,25 @@ public class IndividualOffice extends Office{
 	public String toString() {
 		return "IndividualOffice [_worker=" + _worker + "]";
 	}
+	public void showDetails ()
+	{
+		System.out.print("Room ID: " + _id);
+		System.out.print("Code Number: " + _code);
+		System.out.print("Size: " + _size);
+		System.out.print("Reserved: " + _reserved);
+		if (this._reserved == true)
+		{
+			System.out.print("fonction Loic");
+			//System.out.print("Actual Worker:");
+			//_worker.whoIAm();
+		}
+		else
+		{
+			System.out.print("Formal employee: non fait");
+			//System.out.print("Formal Employee: ");
+			// _worker.whoIAm(); 
+		}
+	}
 	
 	// Allow to block the Office for a particular employee. Check if it's not already blocked by someone else.
 	public Boolean block(Employee e){

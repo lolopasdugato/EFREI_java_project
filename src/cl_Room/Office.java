@@ -49,4 +49,12 @@ public abstract class Office {
 		// Force to insert the newly created office into the container.
 		_container.get_array().add(this);
 	}
+	abstract public void showDetails ();
+	public void show ()
+	{
+		System.out.print("Room ID:" + _id);
+		System.out.print("Code Number:" + _code);
+		System.out.print("Size" + _size);
+		System.out.print("Reserved:" + _reserved);
+	}
 }

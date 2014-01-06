@@ -6,6 +6,16 @@ public class MeetingRoom extends Office {
 	private Employee _manager;
 	private Boolean _projector;
 
+	public void showDetails ()
+	{
+		System.out.print("Room ID: " + _id);
+		System.out.print("Code Number: " + _code);
+		System.out.print("Size: " + _size);
+		System.out.print("Reserved: " + _reserved);
+		System.out.print("Manager Details: ");
+		//_manager.whoIAm();
+		System.out.print("Projector: " + _projector);
+	}
 	public Boolean get_projector() {
 		return _projector;
 	}
