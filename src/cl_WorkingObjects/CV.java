@@ -62,7 +62,7 @@ public class CV {
 			}
 		}
 		else
-			System.out.println("No Studies in this CV.");
+			System.out.println("No Jobs in this CV.");
 		if (_schooling.size() != 0){
 			System.out.println("Studies: ");
 			for (int cpt = 0; cpt < _schooling.size(); cpt++){
