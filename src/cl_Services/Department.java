@@ -63,6 +63,14 @@ public class Department {
 				+ _budget + ", _dir=" + _dir + ", _workgroup=" + _workgroup
 				+ "]";
 	}
+	public void show ()
+	{
+		System.out.print("ID: " + _id);
+		System.out.print("Name of the departement:  " + _name);
+		System.out.print("Budget: " + _budget);
+		System.out.print("Director: ");
+		_dir.whoIAm();
+	}
 
 	
 

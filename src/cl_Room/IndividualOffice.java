@@ -25,15 +25,13 @@ public class IndividualOffice extends Office{
 		System.out.print("Reserved: " + _reserved);
 		if (this._reserved == true)
 		{
-			System.out.print("fonction Loic");
-			//System.out.print("Actual Worker:");
-			//_worker.whoIAm();
+			System.out.print("Actual Worker:");
+			_worker.whoIAm();
 		}
 		else
 		{
-			System.out.print("Formal employee: non fait");
-			//System.out.print("Formal Employee: ");
-			// _worker.whoIAm(); 
+			System.out.print("Formal Employee: ");
+			 _worker.whoIAm(); 
 		}
 	}
 	
