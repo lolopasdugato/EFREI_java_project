@@ -71,7 +71,7 @@ public class Department {
 			_dir.whoIAm();
 		}
 		else
-			System.out.println("No director.");
+			System.out.println("No director.\n\n");
 	}
 
 	

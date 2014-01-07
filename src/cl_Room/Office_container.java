@@ -28,7 +28,7 @@ public class Office_container {
 	{
 		if (this._array.size() != 0){
 			for (int cpt = 0; cpt < this._array.size(); cpt++){
-				System.out.print("Office :" );
+				System.out.println("Office: " + cpt );
 				this._array.get(cpt).show();
 			}
 		}

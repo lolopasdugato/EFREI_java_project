@@ -26,14 +26,16 @@ public class OpenSpace extends Office {
 	}
 	
 	// Allow to block an OpenSpace for a special group of Employees.
-	public Boolean block(Employee_container e){
+	public Boolean block(Employee e){
 		if(this._reserved){
 			System.out.println("Sorry, this OpenSpace is already blocked by another group");
 			return false;
 		}
 		else{
 			this._reserved = true;
-			this._roomMembers = e;
+			this._roomMembers.get_array().add(e);
+			System.out.println("Open space blocked for: ");
+			e.whoIAm();
 			return true;
 		}
 	}
@@ -41,11 +43,12 @@ public class OpenSpace extends Office {
 	// Allow to remove the whole group of workers in this OpenSpace
 	public Boolean unBlock(){
 		if(!this._reserved){
-			System.out.println("Cannot remove the Employee group, no group found");
+			System.out.println("Cannot remove the Employee group in this open space, no group found");
 			return false;
 		}
 		else{
 			this._reserved = false;
+			System.out.println("Open space unlocked.");
 			return true;
 		}
 	}
@@ -67,10 +70,24 @@ public class OpenSpace extends Office {
 	
 	public void showDetails ()
 	{
-		System.out.print("Room ID: " + _id);
-		System.out.print("Code Number: " + _code);
-		System.out.print("Size: " + _size);
-		System.out.print("Reserved: " + _reserved);
-		System.out.print("Capacity: " + _capacity);
+		System.out.println("Room type: Open Space.");
+		System.out.println("Room ID: " + _id);
+		System.out.println("Code Number: " + _code);
+		System.out.println("Size: " + _size);
+		System.out.println("Reserved: " + _reserved);
+		System.out.println("Capacity: " + _capacity+ "\n\n");
+		if(_reserved){
+			System.out.println("Current employee(s): ");
+			_roomMembers.show();
+		}
+		else{
+			if(_roomMembers == null || _roomMembers.get_array().size() == 0){
+				System.out.println("No Room members.");
+			}
+			else{
+				System.out.println("Last room members: ");
+				_roomMembers.show();
+			}
+		}
 	}
 }

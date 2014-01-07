@@ -1,6 +1,7 @@
 package cl_Room;
 
 import cl_Room.Office_container;
+import cl_People.Employee;
 
 public abstract class Office {
 	protected int _code;
@@ -50,11 +51,16 @@ public abstract class Office {
 		_container.get_array().add(this);
 	}
 	abstract public void showDetails ();
+	abstract public Boolean block(Employee e);
+	abstract public Boolean unBlock();
 	public void show ()
 	{
-		System.out.println("Room ID:" + _id);
-		System.out.println("Code Number:" + _code);
-		System.out.println("Size" + _size);
-		System.out.println("Reserved:" + _reserved);
+		System.out.println("Room ID: " + _id);
+		System.out.println("Code Number: " + _code);
+		System.out.println("Size: " + _size + " square meters.");
+		if (_reserved)
+			System.out.println("Reserved: yes.\n\n");
+		else
+			System.out.println("Reserved: no.\n\n");
 	}
 }

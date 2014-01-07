@@ -9,21 +9,21 @@ import cl_People.Director;
 import java.util.Scanner;
 
 public class Employee {
-	private int _socialId;
+	private String _socialId;
 	private String _firstname;
 	private String _lastname;
 	private String _phoneNumber;
 	private String _address;
-	private Date _birthDay;
+	private int _age;
 	private Date _recrutingDay;
 	private CV _curiculum;
 	private Employee_container _container;
 
 	
-	public int get_socialId() {
+	public String get_socialId() {
 		return _socialId;
 	}
-	public void set_socialId(int _socialId) {
+	public void set_socialId(String _socialId) {
 		this._socialId = _socialId;
 	}
 	public String get_firstname() {
@@ -50,11 +50,11 @@ public class Employee {
 	public void set_address(String _address) {
 		this._address = _address;
 	}
-	public Date get_birthDay() {
-		return _birthDay;
+	public int get_age() {
+		return _age;
 	}
-	public void set_birthDay(Date _birthDay) {
-		this._birthDay = _birthDay;
+	public void set_age(int _age) {
+		this._age = _age;
 	}
 	public Date get_recrutingDay() {
 		return _recrutingDay;
@@ -74,8 +74,8 @@ public class Employee {
 	public void set_curiculum(CV _curiculum) {
 		this._curiculum = _curiculum;
 	}
-	public Employee(int _socialId, String _firstname, String _lastname,
-			String _phoneNumber, String _address, Date _birthDay,
+	public Employee(String _socialId, String _firstname, String _lastname,
+			String _phoneNumber, String _address, int _age,
 			Date _recrutingDay, Employee_container _container) {
 		super();
 		this._socialId = _socialId;
@@ -83,7 +83,7 @@ public class Employee {
 		this._lastname = _lastname;
 		this._phoneNumber = _phoneNumber;
 		this._address = _address;
-		this._birthDay = _birthDay;
+		this._age = _age;
 		this._recrutingDay = _recrutingDay;
 		this._curiculum = new CV(this);
 		this._container = _container;
@@ -94,18 +94,18 @@ public class Employee {
 	public String toString() {
 		return "Employee [_socialId=" + _socialId + ", _firstname="
 				+ _firstname + ", _lastname=" + _lastname + ", _phoneNumber="
-				+ _phoneNumber + ", _address=" + _address + ", _birthDay="
-				+ _birthDay + ", _recrutingDay=" + _recrutingDay
+				+ _phoneNumber + ", _address=" + _address + ", _age="
+				+ _age + ", _recrutingDay=" + _recrutingDay
 				+ "]";
 	}
 	
 	public void whoIAm(){
-		System.out.println("I am " + _firstname + " " + _lastname);
-		System.out.println("My social ID is: " + _socialId);
-		System.out.println("My phone number is: " + _phoneNumber);
-		System.out.println("You can join me by using this address: " + _address);
-		System.out.println("My birthdate is: " + _birthDay);
-		System.out.println("I have been recruted the following day: " + _recrutingDay + "\n");
+		System.out.println(_firstname + " " + _lastname);
+		System.out.println("Social ID is: " + _socialId);
+		System.out.println("Phone number is: " + _phoneNumber);
+		System.out.println("You can join him by using this address: " + _address);
+		System.out.println("age: " + _age);
+		System.out.println("Recruted the following day: " + _recrutingDay + "\n");
 		return;
 	}
 	
@@ -132,7 +132,8 @@ public class Employee {
 	}
 	
 	public static Director promote(Employee temp, Department _belongsTo){
-		Director dirlo = new Director(temp.get_socialId(), temp.get_firstname(), temp.get_lastname(), temp.get_phoneNumber(), temp.get_address(), temp.get_birthDay(), temp.get_recrutingDay(), temp.get_container(), _belongsTo);
+		temp.get_container().get_array().remove(temp);
+		Director dirlo = new Director(temp.get_socialId(), temp.get_firstname(), temp.get_lastname(), temp.get_phoneNumber(), temp.get_address(), temp.get_age(), temp.get_recrutingDay(), temp.get_container(), _belongsTo);
 		dirlo.set_curiculum(temp.get_curiculum());
 		_belongsTo.set_dir(dirlo);
 		return dirlo;
@@ -141,7 +142,7 @@ public class Employee {
 		this.set_lastname(e.get_lastname());
 		this.set_phoneNumber(e.get_phoneNumber());
 		this.set_address(e.get_address());
-		this.set_birthDay(e.get_birthDay());
+		this.set_age(e.get_age());
 		this.set_recrutingDay(e.get_recrutingDay());
 		e.set_belongsTo(_belongsTo);*/
 	}

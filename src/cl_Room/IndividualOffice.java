@@ -19,6 +19,7 @@ public class IndividualOffice extends Office{
 	}
 	public void showDetails ()
 	{
+		System.out.println("Room type: Individual Office.");
 		System.out.println("Room ID: " + _id );
 		System.out.println("Code Number: " + _code );
 		System.out.println("Size: " + _size );
@@ -30,8 +31,11 @@ public class IndividualOffice extends Office{
 		}
 		else
 		{
-			System.out.print("Formal Employee: ");
-			 _worker.whoIAm(); 
+			System.out.print("Last Employee: ");
+			if(_worker == null)
+				System.out.println("None.");
+			else
+				_worker.whoIAm(); 
 		}
 	}
 	
@@ -44,6 +48,8 @@ public class IndividualOffice extends Office{
 		else{
 			this._worker = e;
 			this._reserved = true;
+			System.out.println("Individual office blocked for: ");
+			_worker.whoIAm();
 			return true;
 		}
 	}
@@ -56,6 +62,7 @@ public class IndividualOffice extends Office{
 		}
 		else{
 			this._reserved = false;
+			System.out.println("Individual office unlocked.");
 			return true;
 		}
 	}

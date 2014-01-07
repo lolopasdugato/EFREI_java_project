@@ -20,5 +20,18 @@ public class Employee_container {
 			e.printStackTrace();
 		}
 	}
+	
+	public void show ()
+	{
+		if (this._array.size() != 0){
+			System.out.println("Employee(s): ");
+			for (int cpt = 0; cpt < this._array.size(); cpt++){
+				System.out.print(cpt + ": " + this._array.get(cpt).get_firstname() + " " + this._array.get(cpt).get_lastname() + "\n");
+			}
+		}
+		else
+			System.out.println("No employee in this group.");
+		System.out.println("\n\n");
+	}
 
 }

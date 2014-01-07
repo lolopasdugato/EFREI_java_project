@@ -32,6 +32,8 @@ public class MeetingRoom extends Office {
 		else{
 			_manager = e;
 			_reserved = true;
+			System.out.println("Meeting room blocked for: ");
+			_manager.whoIAm();
 			return true;
 		}
 	}
@@ -44,17 +46,33 @@ public class MeetingRoom extends Office {
 		}
 		else{
 			this._reserved = false;
+			System.out.println("Meeting Room unlocked.");
 			return true;
 		}
 	}
 	public void showDetails ()
 	{
+		System.out.println("Room type: Meeting Room.");
 		System.out.println("Room ID: " + _id);
 		System.out.println("Code Number: " + _code);
 		System.out.println("Size: " + _size);
 		System.out.println("Reserved: " + _reserved);
 		System.out.println("Manager Details: ");
-		_manager.whoIAm();
-		System.out.println("Projector: " + _projector);
+		
+		if(_reserved){
+			System.out.println("Current manager: ");
+			_manager.whoIAm();
+		}
+		else{
+			System.out.println("Last manager: ");
+			if(_manager == null)
+				System.out.println("No manager.");
+			else
+				_manager.whoIAm();
+		}
+		if(_projector)
+			System.out.println("Projector: yes.");
+		else
+			System.out.println("Projector: no.");
 	}
 }

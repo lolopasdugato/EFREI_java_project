@@ -8,12 +8,12 @@ public class Director extends Employee {
 
 	private Department _belongsTo;
 	
-	public Director(int _socialId, String _firstname, String _lastname,
-			String _phoneNumber, String _address, Date _birthDay,
+	public Director(String _socialId, String _firstname, String _lastname,
+			String _phoneNumber, String _address, int _age,
 			Date _recrutingDay, Employee_container _container,
 			Department _belongsTo) {
 		super(_socialId, _firstname, _lastname, _phoneNumber, _address,
-				_birthDay, _recrutingDay, _container);
+				_age, _recrutingDay, _container);
 		this._belongsTo = _belongsTo;
 	}
 
@@ -34,9 +34,9 @@ public class Director extends Employee {
 		System.out.println("My social ID is: " + get_socialId());
 		System.out.println("My phone number is: " + get_phoneNumber());
 		System.out.println("You can join me by using this address: " + get_address());
-		System.out.println("My birthdate is: " + get_birthDay());
-		System.out.println("I have been recruted the following day: " + get_recrutingDay() + "\n");
-		System.out.println("Name of his departement: " + get_belongsTo().get_name());
+		System.out.println("I am: " + get_age());
+		System.out.println("I have been recruted the following day: " + get_recrutingDay());
+		System.out.println("Name of his departement: " + get_belongsTo().get_name() + "\n\n");
 		return;
 	}
 }

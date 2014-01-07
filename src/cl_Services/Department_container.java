@@ -34,7 +34,7 @@ public class Department_container {
 	{
 		if (this._array.size() != 0){
 			for (int cpt = 0; cpt < this._array.size(); cpt++){
-				System.out.print("Department :" );
+				System.out.println("Department(s): " );
 				this._array.get(cpt).show();
 			}
 		}
