@@ -144,4 +144,20 @@ public class Employee {
 			return dirlo;
 		}
 	}
+	
+	public static int menu(){
+		Scanner sc = new Scanner(System.in);
+		int resp;
+		do{
+			System.out.println("What do you want to do now ?\n");
+			System.out.println("1) Show all rooms.");
+			System.out.println("2) Show my Cv.");
+			System.out.println("3) Modify my Cv.");
+			System.out.println("4) Block a new room.");
+			System.out.println("5) Unblock your room.");
+			System.out.println("6) Quit.");
+			resp = sc.nextInt();
+		}while(resp < 1 || resp > 6);
+		return resp;
+	}
 }

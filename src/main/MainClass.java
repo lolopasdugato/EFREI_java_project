@@ -38,26 +38,19 @@ public class MainClass {
 		return work_Group;
 	}
 	
-	public static Department_container initDefaultDepContainer(Employee_container e){
-		Department_container default_Department_Group = new Department_container();
-		new Department("Human Ressources", 15000, e, default_Department_Group);
-		return default_Department_Group;
+	public static Employee_container initDefaultRhGroup(){
+		Employee_container rh = new Employee_container();
+		
+		new Employee("897198496523605", "Danielle", "Donagan", "0754625126", "dan@gmail.com", 35, new Date(), rh);
+		new Employee("687016233645016", "Jennifer", "O'Connel", "6978149754", "jen666@gmail.com", 24, new Date(), rh);
+		return rh;
 	}
 	
-	public static int menuEmployee(){
-		Scanner sc = new Scanner(System.in);
-		int resp;
-		do{
-			System.out.println("What do you want to do now ?\n");
-			System.out.println("1) Show all rooms.");
-			System.out.println("2) Show my Cv.");
-			System.out.println("3) Modify my Cv.");
-			System.out.println("4) Block a new room.");
-			System.out.println("5) Unblock your room.");
-			System.out.println("6) Quit.");
-			resp = sc.nextInt();
-		}while(resp < 1 || resp > 6);
-		return resp;
+	public static Department_container initDefaultDepContainer(Employee_container e, Employee_container rh){
+		Department_container default_Department_Group = new Department_container();
+		new Department("Human Ressources", 15000, rh, default_Department_Group);
+		new Department("Ingeniering", 160000, e, default_Department_Group);
+		return default_Department_Group;
 	}
 	
 	public static int menuRh(){
@@ -82,7 +75,8 @@ public class MainClass {
 	public static void main(String[] args) {		
 		Office_container default_Building = MainClass.initDefaultBuilding();
 		Employee_container default_Work_Group1 = MainClass.initDefaultEmployeeGroup();
-		Department_container default_Department_Group = MainClass.initDefaultDepContainer(default_Work_Group1);
+		Employee_container default_Rh = MainClass.initDefaultRhGroup();
+		Department_container default_Department_Group = MainClass.initDefaultDepContainer(default_Work_Group1, default_Rh);
 		int menu_Resp = 0;
 		int response = -1;
 		
@@ -90,32 +84,16 @@ public class MainClass {
 		case 1:
 			Office o = null;
 			Employee e = null;
-			Scanner scan = new Scanner(System.in);
 			System.out.println("Hello ! Welcome to our brand new program (beta)!\n\nYou are logged in as a simple Employee\n\n");
 			do{
 				System.out.println("Who are you ? Please enter the id that refers to your name.");
-				for(int i = 0; i < default_Department_Group.get_array().size(); i++){
-					do{
-						for(int j = 0; j < default_Department_Group.get_array().get(i).get_workgroup().get_array().size(); j++){
-							default_Department_Group.get_array().get(i).get_workgroup().show();
-						}
-						System.out.println((default_Department_Group.get_array().get(i).get_workgroup().get_array().size()) + ") Not one of them.");
-						response = scan.nextInt();
-					}while(response > default_Department_Group.get_array().get(i).get_workgroup().get_array().size() || response < 0);
-					
-					if(response == default_Department_Group.get_array().get(i).get_workgroup().get_array().size())
-						response = -1;
-					else{
-						e = default_Department_Group.get_array().get(i).get_workgroup().get_array().get(response);
-						i = default_Department_Group.get_array().size();
-					}
-				}
+				e = HumanRessources.selectEmployee(default_Department_Group);
 			}while(e == null);
 			
 			do{
 				String answer;
 				Scanner scan2 = new Scanner(System.in);
-				menu_Resp = menuEmployee();
+				menu_Resp = Employee.menu();
 				switch(menu_Resp){
 				case 1:
 					default_Building.show();
