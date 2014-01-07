@@ -132,18 +132,16 @@ public class Employee {
 	}
 	
 	public static Director promote(Employee temp, Department _belongsTo){
-		temp.get_container().get_array().remove(temp);
-		Director dirlo = new Director(temp.get_socialId(), temp.get_firstname(), temp.get_lastname(), temp.get_phoneNumber(), temp.get_address(), temp.get_age(), temp.get_recrutingDay(), temp.get_container(), _belongsTo);
-		dirlo.set_curiculum(temp.get_curiculum());
-		_belongsTo.set_dir(dirlo);
-		return dirlo;
-		/*this.set_socialId(e.get_socialId());
-		this.set_firstname(e.get_firstname());
-		this.set_lastname(e.get_lastname());
-		this.set_phoneNumber(e.get_phoneNumber());
-		this.set_address(e.get_address());
-		this.set_age(e.get_age());
-		this.set_recrutingDay(e.get_recrutingDay());
-		e.set_belongsTo(_belongsTo);*/
+		if(_belongsTo.get_dir() != null){
+			System.out.println("Cannot promote the employee in this department. There is already a director.");
+			return null;
+		}
+		else{
+			temp.get_container().get_array().remove(temp);
+			Director dirlo = new Director(temp.get_socialId(), temp.get_firstname(), temp.get_lastname(), temp.get_phoneNumber(), temp.get_address(), temp.get_age(), temp.get_recrutingDay(), temp.get_container(), _belongsTo);
+			dirlo.set_curiculum(temp.get_curiculum());
+			_belongsTo.set_dir(dirlo);
+			return dirlo;
+		}
 	}
 }

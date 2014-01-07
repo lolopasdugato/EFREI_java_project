@@ -30,12 +30,12 @@ public class Director extends Employee {
 		return "Director [_belongsTo=" + _belongsTo + "]";
 	}
 	public void whoIAm(){
-		System.out.println("I am " + get_firstname() + " " + get_lastname());
-		System.out.println("My social ID is: " + get_socialId());
-		System.out.println("My phone number is: " + get_phoneNumber());
-		System.out.println("You can join me by using this address: " + get_address());
-		System.out.println("I am: " + get_age());
-		System.out.println("I have been recruted the following day: " + get_recrutingDay());
+		System.out.println(get_firstname() + " " + get_lastname());
+		System.out.println("Social ID is: " + get_socialId());
+		System.out.println("Phone number is: " + get_phoneNumber());
+		System.out.println("You can join him by using this address: " + get_address());
+		System.out.println("age: " + get_age());
+		System.out.println("Recruted the following day: " + get_recrutingDay());
 		System.out.println("Name of his departement: " + get_belongsTo().get_name() + "\n\n");
 		return;
 	}
