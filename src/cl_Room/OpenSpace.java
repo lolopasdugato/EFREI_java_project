@@ -28,8 +28,8 @@ public class OpenSpace extends Office {
 	// Allow to block an OpenSpace for a special group of Employees.
 	public Boolean block(Employee e){
 		if(this._reserved){
-			System.out.println("Sorry, this OpenSpace is already blocked by another group");
-			return false;
+			System.out.println("This OpenSpace is already blocked by another group, trying to add the new member.");
+			return add(e);
 		}
 		else{
 			this._reserved = true;
@@ -56,7 +56,7 @@ public class OpenSpace extends Office {
 	// Allow to add an employee to an OpenSpace, and check if this OpenSpace isn't full before adding.
 	public Boolean add(Employee e){
 		if(_roomMembers.get_array().size() >= _capacity){
-			System.out.println("Error, the OpenSpace is full ! (capacity: " + _capacity + ")");
+			System.out.println("Error, the OpenSpace is full ! (capacity: " + _capacity + ")\n");
 			return false;
 		}
 		else{
@@ -64,6 +64,7 @@ public class OpenSpace extends Office {
 				this._roomMembers = new Employee_container();
 			this._roomMembers.get_array().add(e);
 			this._reserved = true;
+			System.out.println("Member added.\n");
 			return true;
 		}
 	}
@@ -73,10 +74,10 @@ public class OpenSpace extends Office {
 		System.out.println("Room type: Open Space.");
 		System.out.println("Room ID: " + _id);
 		System.out.println("Code Number: " + _code);
-		System.out.println("Size: " + _size);
-		System.out.println("Reserved: " + _reserved);
-		System.out.println("Capacity: " + _capacity+ "\n\n");
+		System.out.println("Size: " + _size + "square meters.");
+		System.out.println("Capacity: " + _capacity+ " persons.");
 		if(_reserved){
+			System.out.println("Reserved: yes");
 			System.out.println("Current employee(s): ");
 			_roomMembers.show();
 		}
@@ -89,5 +90,6 @@ public class OpenSpace extends Office {
 				_roomMembers.show();
 			}
 		}
+		System.out.println("\n");
 	}
 }

@@ -2,7 +2,7 @@ package cl_People;
 
 import java.util.Date;
 
-import cl_Services.Department;
+import cl_Services.*;
 import cl_WorkingObjects.CV;
 import cl_People.Director;
 
@@ -119,30 +119,13 @@ public class Employee {
 		return;
 	}
 	
-	public static int whoAreYou(){
-		Scanner sc = new Scanner(System.in);
-		int in;
+	public static Employee whoAreYou(Department_container default_Department_Group){
+		Employee e;
 		do{
-			System.out.println("Please select your Department: ");
-			System.out.println("1) Employee.");
-			System.out.println("2) Human Ressources.");
-			in = sc.nextInt();
-		}while(in < 1 && in > 2);
-		return in;
-	}
-	
-	public static Director promote(Employee temp, Department _belongsTo){
-		if(_belongsTo.get_dir() != null){
-			System.out.println("Cannot promote the employee in this department. There is already a director.");
-			return null;
-		}
-		else{
-			temp.get_container().get_array().remove(temp);
-			Director dirlo = new Director(temp.get_socialId(), temp.get_firstname(), temp.get_lastname(), temp.get_phoneNumber(), temp.get_address(), temp.get_age(), temp.get_recrutingDay(), temp.get_container(), _belongsTo);
-			dirlo.set_curiculum(temp.get_curiculum());
-			_belongsTo.set_dir(dirlo);
-			return dirlo;
-		}
+			System.out.println("Who are you ? Please enter the id that refers to your name.");
+			e = HumanRessources.selectEmployee(default_Department_Group);
+		}while(e == null);
+		return e;
 	}
 	
 	public static int menu(){

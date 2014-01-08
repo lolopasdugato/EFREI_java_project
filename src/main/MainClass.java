@@ -40,9 +40,8 @@ public class MainClass {
 	
 	public static Employee_container initDefaultRhGroup(){
 		Employee_container rh = new Employee_container();
-		
-		new Employee("897198496523605", "Danielle", "Donagan", "0754625126", "dan@gmail.com", 35, new Date(), rh);
-		new Employee("687016233645016", "Jennifer", "O'Connel", "6978149754", "jen666@gmail.com", 24, new Date(), rh);
+		new HumanRessources("897198496523605", "Danielle", "Donagan", "0754625126", "dan@gmail.com", 35, new Date(), rh);
+		new HumanRessources("687016233645016", "Jennifer", "O'Connel", "6978149754", "jen666@gmail.com", 24, new Date(), rh);
 		return rh;
 	}
 	
@@ -66,9 +65,11 @@ public class MainClass {
 			System.out.println("6) Block a new room.");
 			System.out.println("7) Unblock a room.");
 			System.out.println("8) Add an employee to an open space.");
-			System.out.println("9) Quit.");
+			System.out.println("9) Recruit an employee.");
+			System.out.println("10) Fire an employee.");
+			System.out.println("11) Quit.");
 			resp = sc.nextInt();
-		}while(resp < 1 || resp > 9);
+		}while(resp < 1 || resp > 11);
 		return resp;
 	}
 
@@ -79,17 +80,17 @@ public class MainClass {
 		Department_container default_Department_Group = MainClass.initDefaultDepContainer(default_Work_Group1, default_Rh);
 		int menu_Resp = 0;
 		int response = -1;
+		int type = 0;
+		Employee e = Employee.whoAreYou(default_Department_Group);
+		if(e instanceof HumanRessources)
+			type = 2;
+		else
+			type = 1;
 		
-		switch(Employee.whoAreYou()){
+		switch(type){
 		case 1:
 			Office o = null;
-			Employee e = null;
 			System.out.println("Hello ! Welcome to our brand new program (beta)!\n\nYou are logged in as a simple Employee\n\n");
-			do{
-				System.out.println("Who are you ? Please enter the id that refers to your name.");
-				e = HumanRessources.selectEmployee(default_Department_Group);
-			}while(e == null);
-			
 			do{
 				String answer;
 				Scanner scan2 = new Scanner(System.in);
@@ -139,10 +140,10 @@ public class MainClass {
 					System.out.println("Unknown error, exiting.");
 					return;
 				}
-				
 			}while(menu_Resp != 6);
 			break;
 		case 2:
+			HumanRessources h = new HumanRessources(e);
 			System.out.println("Hello ! Welcome to our brand new program (beta)!\n\nYou are logged in as a member of the human ressources department.\n\n");
 			do{
 				String answer;
@@ -165,90 +166,40 @@ public class MainClass {
 					}
 					break;
 				case 2:
-					for(int i = 0; i < default_Department_Group.get_array().size(); i++){
-						System.out.println("Departement: " + default_Department_Group.get_array().get(i).get_name());
-						for(int j = 0; j < default_Department_Group.get_array().get(i).get_workgroup().get_array().size(); j++){
-							default_Department_Group.get_array().get(i).get_workgroup().get_array().get(j).whoIAm();
-						}
-					}
+					h.showDetailsOnEmployees(default_Department_Group);
 					break;
 				case 3:
-					default_Department_Group.show();
+					h.showDepartment(default_Department_Group);
 					break;
 				case 4:
-					for(int i = 0; i < default_Department_Group.get_array().size(); i++){
-						response = -1;
-						System.out.println("Departement: " + default_Department_Group.get_array().get(i).get_name());
-						default_Department_Group.get_array().get(i).get_workgroup().show();
-						System.out.println(default_Department_Group.get_array().get(i).get_workgroup().get_array().size() + ") None of them");
-						System.out.println("Please enter the number of the employee you want to promote to the director's position.");
-						do{
-							response = scan2.nextInt();
-						}while(response < 0 || response > default_Department_Group.get_array().get(i).get_workgroup().get_array().size());
-						if(response != default_Department_Group.get_array().get(i).get_workgroup().get_array().size()){
-							Employee.promote(default_Department_Group.get_array().get(i).get_workgroup().get_array().get(response), default_Department_Group.get_array().get(i));
-							i = default_Department_Group.get_array().size();
-						}
-					}
+					h.promoteToDirector(default_Department_Group);
 					break;
 				case 5:
-					for(int i = 0; i < default_Department_Group.get_array().size(); i++){
-						response = -1;
-						System.out.println("Departement: " + default_Department_Group.get_array().get(i).get_name());
-						default_Department_Group.get_array().get(i).get_workgroup().show();
-						System.out.println(default_Department_Group.get_array().get(i).get_workgroup().get_array().size() + ") None of them");
-						System.out.println("Please enter the number of the employee you want to see the CV.");
-						do{
-							response = scan2.nextInt();
-						}while(response < 0 || response > default_Department_Group.get_array().get(i).get_workgroup().get_array().size());
-						if(response != default_Department_Group.get_array().get(i).get_workgroup().get_array().size()){
-							default_Department_Group.get_array().get(i).get_workgroup().get_array().get(response).showCV();
-							i = default_Department_Group.get_array().size();
-						}
-					}
+					h.showACv(default_Department_Group);
 					break;
 				case 6:
-					default_Building.show();
-					System.out.println("Please, enter the number of the office (Be sure to type it's number, not it's ID or it's code).");
-					do{
-						response = scan2.nextInt();
-					}while(response < 0 || response >= default_Building.get_array().size());
-					int office = response;
-					
-					for(int i = 0; i < default_Department_Group.get_array().size(); i++){
-						response = -1;
-						System.out.println("Departement: " + default_Department_Group.get_array().get(i).get_name());
-						default_Department_Group.get_array().get(i).get_workgroup().show();
-						System.out.println(default_Department_Group.get_array().get(i).get_workgroup().get_array().size() + ") None of them");
-						System.out.println("Please enter the number of the employee you want to use the office.");
-						do{
-							response = scan2.nextInt();
-						}while(response < 0 || response > default_Department_Group.get_array().get(i).get_workgroup().get_array().size());
-						if(response != default_Department_Group.get_array().get(i).get_workgroup().get_array().size()){
-							default_Building.get_array().get(office).block(default_Department_Group.get_array().get(i).get_workgroup().get_array().get(response));
-							i = default_Department_Group.get_array().size();
-						}
-					}
+					h.blockARoom(default_Building, default_Department_Group);
 					break;
 				case 7:
-					default_Building.show();
-					System.out.println("Please, enter the number of the office (Be sure to type it's number, not it's ID or it's code).");
-					do{
-						response = scan2.nextInt();
-					}while(response < 0 || response >= default_Building.get_array().size());
-					default_Building.get_array().get(response).unBlock();
+					h.unBlockARoom(default_Building);
 					break;
 				case 8:
-					System.out.println("Not yet implemented");
+					h.addToAnOpenSpace(default_Building, default_Department_Group);
 					break;
 				case 9:
+					h.addEmployee(default_Department_Group);
+					break;
+				case 10:
+					h.fireEmployee(default_Department_Group);
+					break;
+				case 11:
 					System.out.println("Have a good day !");
 					break;
 				default:
 					System.out.println("Unknown error, exiting.");
 					return;
 				}
-			}while(menu_Resp != 9);
+			}while(menu_Resp != 11);
 				break;
 		default:
 			break;
