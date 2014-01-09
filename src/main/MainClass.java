@@ -51,27 +51,6 @@ public class MainClass {
 		new Department("Ingeniering", 160000, e, default_Department_Group);
 		return default_Department_Group;
 	}
-	
-	public static int menuRh(){
-		Scanner sc = new Scanner(System.in);
-		int resp;
-		do{
-			System.out.println("What do you want to do now ?\n");
-			System.out.println("1) Show all rooms.");
-			System.out.println("2) Show all employees.");
-			System.out.println("3) Show Departments.");
-			System.out.println("4) Promote an employee.");
-			System.out.println("5) Show the CV of an employee.");
-			System.out.println("6) Block a new room.");
-			System.out.println("7) Unblock a room.");
-			System.out.println("8) Add an employee to an open space.");
-			System.out.println("9) Recruit an employee.");
-			System.out.println("10) Fire an employee.");
-			System.out.println("11) Quit.");
-			resp = sc.nextInt();
-		}while(resp < 1 || resp > 11);
-		return resp;
-	}
 
 	public static void main(String[] args) {		
 		Office_container default_Building = MainClass.initDefaultBuilding();
@@ -81,11 +60,12 @@ public class MainClass {
 		int menu_Resp = 0;
 		int response = -1;
 		int type = 0;
+		// Determine the person who is using the program
 		Employee e = Employee.whoAreYou(default_Department_Group);
 		if(e instanceof HumanRessources)
-			type = 2;
+			type = 2;	// Human ressources
 		else
-			type = 1;
+			type = 1;	// Simple Employee
 		
 		switch(type){
 		case 1:
@@ -149,7 +129,7 @@ public class MainClass {
 				String answer;
 				response = -1;
 				Scanner scan2 = new Scanner(System.in);
-				menu_Resp = menuRh();
+				menu_Resp = HumanRessources.menu();
 				switch(menu_Resp){
 				case 1:
 					default_Building.show();

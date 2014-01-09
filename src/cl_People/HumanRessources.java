@@ -223,4 +223,25 @@ public class HumanRessources extends Employee {
 				e.get_container().get_array().remove(e);
 		return;
 	}
+	
+	public static int menu(){
+		Scanner sc = new Scanner(System.in);
+		int resp;
+		do{
+			System.out.println("What do you want to do now ?\n");
+			System.out.println("1) Show all rooms.");
+			System.out.println("2) Show all employees.");
+			System.out.println("3) Show Departments.");
+			System.out.println("4) Promote an employee.");
+			System.out.println("5) Show the CV of an employee.");
+			System.out.println("6) Block a new room.");
+			System.out.println("7) Unblock a room.");
+			System.out.println("8) Add an employee to an open space.");
+			System.out.println("9) Recruit an employee.");
+			System.out.println("10) Fire an employee.");
+			System.out.println("11) Quit.");
+			resp = sc.nextInt();
+		}while(resp < 1 || resp > 11);
+		return resp;
+	}
 }
