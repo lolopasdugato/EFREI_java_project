@@ -4,12 +4,12 @@ import cl_People.*;
 
 public class MeetingRoom extends Office {
 	private Employee _manager;
-	private Boolean _projector;
+	private boolean _projector;
 
-	public Boolean get_projector() {
+	public boolean get_projector() {
 		return _projector;
 	}
-	public void set_projector(Boolean _projector) {
+	public void set_projector(boolean _projector) {
 		this._projector = _projector;
 	}
 	public Employee get_manager() {
@@ -18,13 +18,13 @@ public class MeetingRoom extends Office {
 	public void set_manager(Employee _manager) {
 		this._manager = _manager;
 	}
-	public MeetingRoom(int _code, int _size, Office_container _container, Boolean _projector) {
+	public MeetingRoom(int _code, int _size, Office_container _container, boolean _projector) {
 		super(_code, _size, _container);
 		this._projector = _projector;
 	}
 	
 	// Allow to block the Office for a particular employee. Check if it's not already blocked by someone else.
-	public Boolean block(Employee e){
+	public boolean block(Employee e){
 		if(_reserved != false){
 			System.out.println("Sorry but this meetin room is already blocked by " +  _manager.get_firstname() + " " + _manager.get_lastname() + " !");
 			return false;
@@ -39,7 +39,7 @@ public class MeetingRoom extends Office {
 	}
 		
 	// Allow to unblock the office. Check if the office isn't already free.
-	public Boolean unBlock(){
+	public boolean unBlock(){
 		if(!this._reserved){
 			System.out.println("This Meeting Room is already free.");
 			return false;

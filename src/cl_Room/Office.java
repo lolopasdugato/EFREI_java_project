@@ -8,12 +8,12 @@ public abstract class Office {
 	protected int _size;
 	protected int _id;
 	protected static int _nbOfInstance;
-	protected Boolean _reserved;
+	protected boolean _reserved;
 	
-	public Boolean get_reserved() {
+	public boolean get_reserved() {
 		return _reserved;
 	}
-	public void set_reserved(Boolean _reserved) {
+	public void set_reserved(boolean _reserved) {
 		this._reserved = _reserved;
 	}
 	public int get_code() {
@@ -51,8 +51,8 @@ public abstract class Office {
 		_container.get_array().add(this);
 	}
 	abstract public void showDetails ();
-	abstract public Boolean block(Employee e);
-	abstract public Boolean unBlock();
+	abstract public boolean block(Employee e);
+	abstract public boolean unBlock();
 	public void show ()
 	{
 		System.out.println("Room ID: " + _id);

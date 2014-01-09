@@ -40,7 +40,7 @@ public class IndividualOffice extends Office{
 	}
 	
 	// Allow to block the Office for a particular employee. Check if it's not already blocked by someone else.
-	public Boolean block(Employee e){
+	public boolean block(Employee e){
 		if(this._reserved){
 			System.out.println("Sorry but this Individual Office is already blocked by " +  this._worker.get_firstname() + " " + this._worker.get_lastname() + " !");
 			return false;
@@ -55,7 +55,7 @@ public class IndividualOffice extends Office{
 	}
 	
 	// Allow to unblock the office. Check if the office isn't already free.
-	public Boolean unBlock(){
+	public boolean unBlock(){
 		if(!this._reserved){
 			System.out.println("This Office is already free.");
 			return false;

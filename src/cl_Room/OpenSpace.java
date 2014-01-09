@@ -26,7 +26,7 @@ public class OpenSpace extends Office {
 	}
 	
 	// Allow to block an OpenSpace for a special group of Employees.
-	public Boolean block(Employee e){
+	public boolean block(Employee e){
 		if(this._reserved){
 			System.out.println("This OpenSpace is already blocked by another group, trying to add the new member.");
 			return add(e);
@@ -41,7 +41,7 @@ public class OpenSpace extends Office {
 	}
 	
 	// Allow to remove the whole group of workers in this OpenSpace
-	public Boolean unBlock(){
+	public boolean unBlock(){
 		if(!this._reserved){
 			System.out.println("Cannot remove the Employee group in this open space, no group found");
 			return false;
@@ -54,7 +54,7 @@ public class OpenSpace extends Office {
 	}
 	
 	// Allow to add an employee to an OpenSpace, and check if this OpenSpace isn't full before adding.
-	public Boolean add(Employee e){
+	public boolean add(Employee e){
 		if(_roomMembers.get_array().size() >= _capacity){
 			System.out.println("Error, the OpenSpace is full ! (capacity: " + _capacity + ")\n");
 			return false;
