@@ -219,8 +219,13 @@ public class HumanRessources extends Employee {
 		do{
 			answer = scan.nextLine();
 		}while(!(answer.equals("y") || answer.equals("n")));
-			if(answer.equals("y"))
+			if(answer.equals("y")) {
+				for(int i = 0; i < d.get_array().size(); i++){
+					if(e == d.get_array().get(i).get_dir())	// if this employee is a Director, delete him from his department.
+						d.get_array().get(i).set_dir(null);
+				}
 				e.get_container().get_array().remove(e);
+			}
 		return;
 	}
 	

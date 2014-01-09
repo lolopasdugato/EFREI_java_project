@@ -68,15 +68,15 @@ public class MainClass {
 			type = 1;	// Simple Employee
 		
 		switch(type){
-		case 1:
+		case 1:			// Simple Employee
 			Office o = null;
 			System.out.println("Hello ! Welcome to our brand new program (beta)!\n\nYou are logged in as a simple Employee\n\n");
 			do{
 				String answer;
 				Scanner scan2 = new Scanner(System.in);
-				menu_Resp = Employee.menu();
+				menu_Resp = Employee.menu();	// Show the menu for a simple Employee
 				switch(menu_Resp){
-				case 1:
+				case 1:							// Show rooms
 					default_Building.show();
 					System.out.println("Do you want to see more details on a specific room ? (y/n)");
 					do{
@@ -91,13 +91,13 @@ public class MainClass {
 					}
 						
 					break;
-				case 2:
+				case 2:							// Show employee's CV
 					e.showCV();
 					break;
-				case 3:
+				case 3:							// Starts to fill CV
 					e.fillCV();
 					break;
-				case 4:
+				case 4:							// Block a room
 					default_Building.show();
 					System.out.println("Please, enter the number of the office (Be sure to type it's number, not it's ID or it's code).");
 					do{
@@ -110,26 +110,26 @@ public class MainClass {
 					else
 						System.out.println("You cannot reserve more than one room.");
 					break;
-				case 5:
+				case 5:							// Unblock a room
 					o.unBlock();
 					break;
-				case 6:
+				case 6:							// Exit the programm
 					System.out.println("Have a good day !");
 					break;
-				default:
+				default:						// Error case
 					System.out.println("Unknown error, exiting.");
 					return;
 				}
 			}while(menu_Resp != 6);
 			break;
-		case 2:
+		case 2:									// Human Ressources
 			HumanRessources h = new HumanRessources(e);
 			System.out.println("Hello ! Welcome to our brand new program (beta)!\n\nYou are logged in as a member of the human ressources department.\n\n");
 			do{
 				String answer;
 				response = -1;
 				Scanner scan2 = new Scanner(System.in);
-				menu_Resp = HumanRessources.menu();
+				menu_Resp = HumanRessources.menu();	// Start the Human ressources menu
 				switch(menu_Resp){
 				case 1:
 					default_Building.show();
@@ -145,34 +145,34 @@ public class MainClass {
 						default_Building.get_array().get(response).showDetails();
 					}
 					break;
-				case 2:
+				case 2:							// Show all details on each employees
 					h.showDetailsOnEmployees(default_Department_Group);
 					break;
-				case 3:
+				case 3:							// Show details on each departments
 					h.showDepartment(default_Department_Group);
 					break;
-				case 4:
+				case 4:							// Promote an employee to the director's position
 					h.promoteToDirector(default_Department_Group);
 					break;
-				case 5:
+				case 5:							// Permit to select an employee and see his Cv
 					h.showACv(default_Department_Group);
 					break;
-				case 6:
+				case 6:							// Permit to select an employee and block a room for him
 					h.blockARoom(default_Building, default_Department_Group);
 					break;
-				case 7:
+				case 7:							// permit to select a room and unblock it
 					h.unBlockARoom(default_Building);
 					break;
-				case 8:
+				case 8:							// Allow to add an employee to an openspace (or reserve the open space)
 					h.addToAnOpenSpace(default_Building, default_Department_Group);
 					break;
-				case 9:
+				case 9:							// Allow the Human ressources employee to recruit a new person
 					h.addEmployee(default_Department_Group);
 					break;
-				case 10:
+				case 10:						// Allow the human ressources employee to fire an employee
 					h.fireEmployee(default_Department_Group);
 					break;
-				case 11:
+				case 11:						// Quit the programm
 					System.out.println("Have a good day !");
 					break;
 				default:
